@@ -8,9 +8,62 @@
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context=".ExampleActivity">
 
-    <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/button_alert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alert"/>
+
+            <Button
+                android:id="@+id/button_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="List"/>
+
+            <Button
+                android:id="@+id/button_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Progress"/>
+
+            <Button
+                android:id="@+id/button_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"/>
+
+            <Button
+                android:id="@+id/button_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"/>
+
+            <Button
+                android:id="@+id/button_custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Custom"/>
+
+            <Button
+                android:id="@+id/button_holo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Holo"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
