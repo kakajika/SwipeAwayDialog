@@ -1,7 +1,17 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
-/build
-/captures
+captures
+
+local.properties
+ext.properties
+
+# for gradle, IDEA
+.gradle
+build/
+*.iml
+!.idea/runConfigurations/*
+.idea/*.xml
+.idea/.name
+.idea/copyright/
+.idea/libraries/
+.idea/scopes/
+.idea/inspectionProfiles/
