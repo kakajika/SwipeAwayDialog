@@ -7,18 +7,16 @@ Android DialogFragment that enables Dialog to be swiped away to dismiss.
 
 Use `SwipeAwayDialogFragment` instead of `DialogFragment`.
 
-```
+```java
 public class ExampleDialogFragment extends SwipeAwayDialogFragment {
-
     // Implement DialogFragment as usual.
-
 }
 ```
 
-If you want to handle swiped away event, implement `onSwipedAway`.
-You can prevent dismissing by returning false from this method.
+If you want to handle swiped away event, implement `onSwipedAway`.  
+You can prevent dismissing by returning false.
 
-```
+```java
 @Override
 public boolean onSwipedAway() {
     return true;
