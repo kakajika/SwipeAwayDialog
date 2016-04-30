@@ -1,12 +1,12 @@
 package com.labo.kaji.swipeawaydialog.example;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.labo.kaji.swipeawaydialog.example.ExampleDialogFragment.Type;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import com.labo.kaji.swipeawaydialog.example.ExampleDialogFragment.Type;
 
 /**
  * @author kakajika
@@ -21,14 +21,24 @@ public class ExampleActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.button_alert)
-    void onShowAlertDialog() {
-        ExampleDialogFragment.newInstance(Type.ALERT).show(getSupportFragmentManager(), "alert");
+    @OnClick(R.id.button_appcompat_alert)
+    void onShowAppCompatAlertDialog() {
+        ExampleDialogFragment.newInstance(Type.APPCOMPAT).show(getSupportFragmentManager(), "alert");
     }
 
-    @OnClick(R.id.button_list)
-    void onShowListDialog() {
-        ExampleDialogFragment.newInstance(Type.LIST).show(getSupportFragmentManager(), "list");
+    @OnClick(R.id.button_appcompat_list)
+    void onShowAppCompatListDialog() {
+        ExampleDialogFragment.newInstance(Type.APPCOMPAT_LIST).show(getSupportFragmentManager(), "list");
+    }
+
+    @OnClick(R.id.button_default_alert)
+    void onShowDefaultAlertDialog() {
+        ExampleDialogFragment.newInstance(Type.DEFAULT).show(getSupportFragmentManager(), "alert");
+    }
+
+    @OnClick(R.id.button_default_list)
+    void onShowDefaultListDialog() {
+        ExampleDialogFragment.newInstance(Type.DEFAULT_LIST).show(getSupportFragmentManager(), "list");
     }
 
     @OnClick(R.id.button_progress)
@@ -49,11 +59,6 @@ public class ExampleActivity extends AppCompatActivity {
     @OnClick(R.id.button_custom)
     void onShowCustomDialog() {
         ExampleDialogFragment.newInstance(Type.CUSTOM).show(getSupportFragmentManager(), "custom");
-    }
-
-    @OnClick(R.id.button_holo)
-    void onShowHoloDialog() {
-        ExampleDialogFragment.newInstance(Type.HOLO).show(getSupportFragmentManager(), "holo");
     }
 
 }

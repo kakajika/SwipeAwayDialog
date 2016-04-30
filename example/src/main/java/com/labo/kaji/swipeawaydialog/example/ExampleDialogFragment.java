@@ -1,5 +1,6 @@
 package com.labo.kaji.swipeawaydialog.example;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -7,11 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialog;
-import android.text.method.CharacterPickerDialog;
-import android.view.ContextThemeWrapper;
-import android.view.View;
 
 import com.labo.kaji.swipeawaydialog.SwipeAwayDialogFragment;
 
@@ -28,7 +25,42 @@ public class ExampleDialogFragment extends SwipeAwayDialogFragment {
     }
 
     public enum Type implements DialogBuilder {
-        ALERT() {
+        APPCOMPAT() {
+            @Override
+            public @NonNull Dialog create(Context context, ExampleDialogFragment fragment) {
+                return new android.support.v7.app.AlertDialog.Builder(context)
+                        .setTitle("Title")
+                        .setMessage("Message")
+                        .setIcon(R.mipmap.ic_launcher)
+                        .setPositiveButton("OK", null)
+                        .setNegativeButton("Cancel", null)
+                        .create();
+            }
+        },
+        APPCOMPAT_LIST() {
+            @Override
+            public @NonNull Dialog create(Context context, ExampleDialogFragment fragment) {
+                return new android.support.v7.app.AlertDialog.Builder(context)
+                        .setTitle("Title")
+                        .setIcon(R.mipmap.ic_launcher)
+                        .setItems(new String[]{
+                                "Item 1",
+                                "Item 2",
+                                "Item 3",
+                                "Item 4",
+                                "Item 5",
+                                "Item 6",
+                                "Item 7",
+                                "Item 8",
+                                "Item 9",
+                                "Item 10",
+                        }, null)
+                        .setPositiveButton("OK", null)
+                        .setNegativeButton("Cancel", null)
+                        .create();
+            }
+        },
+        DEFAULT() {
             @Override
             public @NonNull Dialog create(Context context, ExampleDialogFragment fragment) {
                 return new AlertDialog.Builder(context)
@@ -40,7 +72,7 @@ public class ExampleDialogFragment extends SwipeAwayDialogFragment {
                         .create();
             }
         },
-        LIST() {
+        DEFAULT_LIST() {
             @Override
             public @NonNull Dialog create(Context context, ExampleDialogFragment fragment) {
                 return new AlertDialog.Builder(context)
@@ -98,18 +130,6 @@ public class ExampleDialogFragment extends SwipeAwayDialogFragment {
                 dialog.setTitle("Title");
                 dialog.setContentView(R.layout.dialog_custom);
                 return dialog;
-            }
-        },
-        HOLO() {
-            @Override
-            public @NonNull Dialog create(Context context, ExampleDialogFragment fragment) {
-                return new android.app.AlertDialog.Builder(context, android.R.style.Theme_Holo_Dialog)
-                        .setTitle("Title")
-                        .setMessage("Message")
-                        .setIcon(R.mipmap.ic_launcher)
-                        .setPositiveButton("OK", null)
-                        .setNegativeButton("Cancel", null)
-                        .create();
             }
         },
     }
