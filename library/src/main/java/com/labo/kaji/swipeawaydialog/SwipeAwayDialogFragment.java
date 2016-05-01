@@ -1,6 +1,6 @@
 package com.labo.kaji.swipeawaydialog;
 
-import android.support.v4.app.DialogFragment;
+import android.app.DialogFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -12,7 +12,9 @@ import android.view.Window;
 public class SwipeAwayDialogFragment extends DialogFragment {
 
     private boolean mSwipeable = true;
+    private boolean mTiltEnabled = true;
     private boolean mSwipeLayoutGenerated = false;
+    private SwipeDismissTouchListener mListener = null;
 
     /**
      * Set whether dialog can be swiped away.
@@ -26,6 +28,23 @@ public class SwipeAwayDialogFragment extends DialogFragment {
      */
     public boolean isSwipeable() {
         return mSwipeable;
+    }
+
+    /**
+     * Set whether tilt effect is enabled on swiping.
+     */
+    public void setTiltEnabled(boolean tiltEnabled) {
+        mTiltEnabled = tiltEnabled;
+        if (mListener != null) {
+            mListener.setTiltEnabled(tiltEnabled);
+        }
+    }
+
+    /**
+     * Get whether tilt effect is enabled on swiping.
+     */
+    public boolean isTiltEnabled() {
+        return mTiltEnabled;
     }
 
     /**
@@ -50,7 +69,7 @@ public class SwipeAwayDialogFragment extends DialogFragment {
             layout.addView(content);
             decorView.addView(layout);
 
-            SwipeDismissTouchListener listener = new SwipeDismissTouchListener(decorView, "layout", new SwipeDismissTouchListener.DismissCallbacks() {
+            mListener = new SwipeDismissTouchListener(decorView, "layout", new SwipeDismissTouchListener.DismissCallbacks() {
                 @Override
                 public boolean canDismiss(Object token) {
                     return isCancelable() && mSwipeable;
@@ -63,8 +82,9 @@ public class SwipeAwayDialogFragment extends DialogFragment {
                     }
                 }
             });
-            layout.setSwipeDismissTouchListener(listener);
-            layout.setOnTouchListener(listener);
+            mListener.setTiltEnabled(mTiltEnabled);
+            layout.setSwipeDismissTouchListener(mListener);
+            layout.setOnTouchListener(mListener);
             layout.setClickable(true);
             mSwipeLayoutGenerated = true;
         }

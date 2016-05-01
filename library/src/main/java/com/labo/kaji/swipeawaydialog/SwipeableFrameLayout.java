@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
  * @author kakajika
  * @since 15/08/15.
  */
-class SwipeableFrameLayout extends FrameLayout {
+public class SwipeableFrameLayout extends FrameLayout {
 
     private SwipeDismissTouchListener mTouchListener;
 

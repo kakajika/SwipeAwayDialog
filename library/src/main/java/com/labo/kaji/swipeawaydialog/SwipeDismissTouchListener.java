@@ -57,7 +57,7 @@ import android.widget.ListView;
  *
  * @see SwipeDismissListViewTouchListener
  */
-class SwipeDismissTouchListener implements View.OnTouchListener {
+public class SwipeDismissTouchListener implements View.OnTouchListener {
     // Cached ViewConfiguration and system-wide constant values
     private int mSlop;
     private int mMinFlingVelocity;
@@ -77,6 +77,8 @@ class SwipeDismissTouchListener implements View.OnTouchListener {
     private Object mToken;
     private VelocityTracker mVelocityTracker;
     private float mTranslationX;
+
+    private boolean mTiltEnabled = true;
 
     /**
      * The callback interface used by {@link SwipeDismissTouchListener} to inform its client
@@ -115,6 +117,10 @@ class SwipeDismissTouchListener implements View.OnTouchListener {
         mView = view;
         mToken = token;
         mCallbacks = callbacks;
+    }
+
+    public void setTiltEnabled(boolean tiltEnabled) {
+        mTiltEnabled = tiltEnabled;
     }
 
     @Override
@@ -165,6 +171,7 @@ class SwipeDismissTouchListener implements View.OnTouchListener {
                     // dismiss
                     mView.animate()
                             .translationX(dismissRight ? mViewWidth : -mViewWidth)
+                            .rotation(mTiltEnabled ? (dismissRight ? 45 : -45) : 0f)
                             .alpha(0)
                             .setDuration(mAnimationTime)
                             .setListener(new AnimatorListenerAdapter() {
@@ -177,6 +184,7 @@ class SwipeDismissTouchListener implements View.OnTouchListener {
                     // cancel
                     mView.animate()
                             .translationX(0)
+                            .rotation(0)
                             .alpha(1)
                             .setDuration(mAnimationTime)
                             .setListener(null);
@@ -197,6 +205,7 @@ class SwipeDismissTouchListener implements View.OnTouchListener {
 
                 mView.animate()
                         .translationX(0)
+                        .rotation(0)
                         .alpha(1)
                         .setDuration(mAnimationTime)
                         .setListener(null);
@@ -234,9 +243,9 @@ class SwipeDismissTouchListener implements View.OnTouchListener {
                 if (mSwiping) {
                     mTranslationX = deltaX;
                     mView.setTranslationX(deltaX - mSwipingSlop);
+                    mView.setRotation(mTiltEnabled ? 45f * deltaX / mViewWidth : 0f);
                     // TODO: use an ease-out interpolator or such
-                    mView.setAlpha(Math.max(0f, Math.min(1f,
-                            1f - 2f * Math.abs(deltaX) / mViewWidth)));
+                    mView.setAlpha(Math.max(0f, Math.min(1f, 1f - 2f * Math.abs(deltaX) / mViewWidth)));
                     return true;
                 }
                 break;
@@ -262,6 +271,7 @@ class SwipeDismissTouchListener implements View.OnTouchListener {
                 // Reset view presentation
                 mView.setAlpha(1f);
                 mView.setTranslationX(0);
+                mView.setRotation(0);
                 lp.height = originalHeight;
                 mView.setLayoutParams(lp);
             }
