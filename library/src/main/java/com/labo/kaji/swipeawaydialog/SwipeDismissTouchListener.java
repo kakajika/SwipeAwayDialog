@@ -19,25 +19,15 @@ package com.labo.kaji.swipeawaydialog;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.app.ListActivity;
-import android.app.ListFragment;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 /**
  * A {@link View.OnTouchListener} that makes any {@link View} dismissable when the
  * user swipes (drags her finger) horizontally across the view.
- *
- * <p><em>For {@link ListView} list items that don't manage their own touch events
- * (i.e. you're using
- * {@link ListView#setOnItemClickListener(AdapterView.OnItemClickListener)}
- * or an equivalent listener on {@link ListActivity} or
- * {@link ListFragment}, use {@link SwipeDismissListViewTouchListener} instead.</em></p>
  *
  * <p>Example usage:</p>
  *
@@ -54,8 +44,6 @@ import android.widget.ListView;
  *
  * <p>This class Requires API level 12 or later due to use of {@link
  * android.view.ViewPropertyAnimator}.</p>
- *
- * @see SwipeDismissListViewTouchListener
  */
 public class SwipeDismissTouchListener implements View.OnTouchListener {
     // Cached ViewConfiguration and system-wide constant values
@@ -96,7 +84,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
          * @param view  The originating {@link View} to be dismissed.
          * @param token The optional token passed to this object's constructor.
          */
-        void onDismiss(View view, Object token);
+        void onDismiss(View view, boolean toRight, Object token);
     }
 
     /**
@@ -156,7 +144,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
                 float absVelocityX = Math.abs(velocityX);
                 float absVelocityY = Math.abs(mVelocityTracker.getYVelocity());
                 boolean dismiss = false;
-                boolean dismissRight = false;
+                final boolean dismissRight;
                 if (Math.abs(deltaX) > mViewWidth / 2 && mSwiping) {
                     dismiss = true;
                     dismissRight = deltaX > 0;
@@ -166,6 +154,8 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
                     // dismiss only if flinging in the same direction as dragging
                     dismiss = (velocityX < 0) == (deltaX < 0);
                     dismissRight = mVelocityTracker.getXVelocity() > 0;
+                } else {
+                    dismissRight = false;
                 }
                 if (dismiss) {
                     // dismiss
@@ -177,7 +167,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
                             .setListener(new AnimatorListenerAdapter() {
                                 @Override
                                 public void onAnimationEnd(Animator animation) {
-                                    performDismiss();
+                                    performDismiss(dismissRight);
                                 }
                             });
                 } else if (mSwiping) {
@@ -254,7 +244,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
         return false;
     }
 
-    private void performDismiss() {
+    private void performDismiss(final boolean toRight) {
         // Animate the dismissed view to zero-height and then fire the dismiss callback.
         // This triggers layout on each animation frame; in the future we may want to do something
         // smarter and more performant.
@@ -267,7 +257,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mCallbacks.onDismiss(mView, mToken);
+                mCallbacks.onDismiss(mView, toRight, mToken);
                 // Reset view presentation
                 mView.setAlpha(1f);
                 mView.setTranslationX(0);

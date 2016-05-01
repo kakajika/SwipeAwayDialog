@@ -14,11 +14,11 @@ public class ExampleDialogFragment extends SwipeAwayDialogFragment {
 ```
 
 If you want to handle swiped away event, implement `onSwipedAway`.  
-You can prevent dismissing by returning false.
+You can prevent dismissing by returning true.
 
 ```java
 @Override
-public boolean onSwipedAway() {
-    return true;
+public boolean onSwipedAway(boolean toRight) {
+    return false;
 }
 ```

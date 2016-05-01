@@ -49,10 +49,10 @@ public class SwipeAwayDialogFragment extends DialogFragment {
 
     /**
      * Called when dialog is swiped away to dismiss.
-     * @return false to prevent dismissing
+     * @return true to prevent dismissing
      */
-    public boolean onSwipedAway() {
-        return true;
+    public boolean onSwipedAway(boolean toRight) {
+        return false;
     }
 
     @Override
@@ -76,8 +76,8 @@ public class SwipeAwayDialogFragment extends DialogFragment {
                 }
 
                 @Override
-                public void onDismiss(View view, Object token) {
-                    if (onSwipedAway()) {
+                public void onDismiss(View view, boolean toRight, Object token) {
+                    if (!onSwipedAway(toRight)) {
                         dismiss();
                     }
                 }
