@@ -3,6 +3,8 @@ Android DialogFragment that enables Dialog to be swiped away to dismiss.
 
 ![](https://raw.githubusercontent.com/wiki/kakajika/SwipeAwayDialog/images/octocats.gif)
 
+![](https://raw.githubusercontent.com/wiki/kakajika/SwipeAwayDialog/images/dialogs.gif)
+
 ## Usage
 
 Use `SwipeAwayDialogFragment` instead of `DialogFragment`.
