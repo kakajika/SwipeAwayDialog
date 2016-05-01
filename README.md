@@ -1,5 +1,6 @@
 # SwipeAwayDialog
-Android DialogFragment that enables Dialog to be swiped away to dismiss.
+Android DialogFragment that enables Dialog to be swiped away to dismiss.  
+It's extremely easy to make Tinder-like UI.
 
 ![](https://raw.githubusercontent.com/wiki/kakajika/SwipeAwayDialog/images/octocats.gif)
 
@@ -7,7 +8,7 @@ Android DialogFragment that enables Dialog to be swiped away to dismiss.
 
 ## Usage
 
-Use `SwipeAwayDialogFragment` instead of `DialogFragment`.
+Just extend `SwipeAwayDialogFragment` instead of `DialogFragment`.
 
 ```java
 public class ExampleDialogFragment extends SwipeAwayDialogFragment {
