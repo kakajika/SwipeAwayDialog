@@ -9,16 +9,21 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDialog;
+import android.widget.ImageView;
 
-import com.labo.kaji.swipeawaydialog.SwipeAwayDialogFragment;
+import com.bumptech.glide.Glide;
+import com.labo.kaji.swipeawaydialog.support.v4.SwipeAwayDialogFragment;
 
 import java.util.Calendar;
+import java.util.Random;
 
 /**
  * @author kakajika
  * @since 15/08/15.
  */
 public class ExampleDialogFragment extends SwipeAwayDialogFragment {
+
+    private static final Random sRandom = new Random();
 
     private interface DialogBuilder {
         @NonNull Dialog create(Context context, ExampleDialogFragment fragment);
@@ -126,9 +131,12 @@ public class ExampleDialogFragment extends SwipeAwayDialogFragment {
         CUSTOM() {
             @Override
             public @NonNull Dialog create(Context context, ExampleDialogFragment fragment) {
+                String[] urls = context.getResources().getStringArray(R.array.octocat_urls);
                 AppCompatDialog dialog = new AppCompatDialog(context);
-                dialog.setTitle("Title");
                 dialog.setContentView(R.layout.dialog_custom);
+                Glide.with(fragment)
+                        .load(urls[sRandom.nextInt(urls.length)])
+                        .into((ImageView) dialog.findViewById(R.id.customdialog_image));
                 return dialog;
             }
         },

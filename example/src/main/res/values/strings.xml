@@ -3,4 +3,52 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="octocat_urls">
+        <item>https://octodex.github.com/images/hanukkat.png</item>
+        <item>https://octodex.github.com/images/welcometocat.png</item>
+        <item>https://octodex.github.com/images/filmtocat.png</item>
+        <item>https://octodex.github.com/images/privateinvestocat.jpg</item>
+        <item>https://octodex.github.com/images/gracehoppertocat.jpg</item>
+        <item>https://octodex.github.com/images/gobbleotron.gif</item>
+        <item>https://octodex.github.com/images/jetpacktocat.png</item>
+        <item>https://octodex.github.com/images/minertocat.png</item>
+        <item>https://octodex.github.com/images/mountietocat.png</item>
+        <item>https://octodex.github.com/images/saketocat.png</item>
+        <item>https://octodex.github.com/images/luchadortocat.png</item>
+        <item>https://octodex.github.com/images/saritocat.png</item>
+        <item>https://octodex.github.com/images/topguntocat.png</item>
+        <item>https://octodex.github.com/images/carlostocat.gif</item>
+        <item>https://octodex.github.com/images/grinchtocat.gif</item>
+        <item>https://octodex.github.com/images/maxtocat.gif</item>
+        <item>https://octodex.github.com/images/yaktocat.png</item>
+        <item>https://octodex.github.com/images/steroidtocat.png</item>
+        <item>https://octodex.github.com/images/mummytocat.gif</item>
+        <item>https://octodex.github.com/images/labtocat.png</item>
+        <item>https://octodex.github.com/images/dunetocat.png</item>
+        <item>https://octodex.github.com/images/octoliberty.png</item>
+        <item>https://octodex.github.com/images/femalecodertocat.png</item>
+        <item>https://octodex.github.com/images/daftpunktocat-thomas.gif</item>
+        <item>https://octodex.github.com/images/daftpunktocat-guy.gif</item>
+        <item>https://octodex.github.com/images/foundingfather_v2.png</item>
+        <item>https://octodex.github.com/images/poptocat_v2.png</item>
+        <item>https://octodex.github.com/images/Mardigrastocat.png</item>
+        <item>https://octodex.github.com/images/kimonotocat.png</item>
+        <item>https://octodex.github.com/images/Professortocat_v2.png</item>
+        <item>https://octodex.github.com/images/goretocat.png</item>
+        <item>https://octodex.github.com/images/Robotocat.png</item>
+        <item>https://octodex.github.com/images/motherhubbertocat.png</item>
+        <item>https://octodex.github.com/images/skitchtocat.png</item>
+        <item>https://octodex.github.com/images/gangnamtocat.png</item>
+        <item>https://octodex.github.com/images/droctocat.png</item>
+        <item>https://octodex.github.com/images/spidertocat.png</item>
+        <item>https://octodex.github.com/images/megacat-2.png</item>
+        <item>https://octodex.github.com/images/dodgetocat_v2.png</item>
+        <item>https://octodex.github.com/images/stormtroopocat.png</item>
+        <item>https://octodex.github.com/images/pusheencat.png</item>
+        <item>https://octodex.github.com/images/deckfailcat.png</item>
+        <item>https://octodex.github.com/images/murakamicat.png</item>
+        <item>https://octodex.github.com/images/homercat.png</item>
+    </string-array>
+
 </resources>
