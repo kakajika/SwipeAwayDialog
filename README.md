@@ -1,7 +1,7 @@
 # SwipeAwayDialog
 Android DialogFragment that enables Dialog to be swiped away to dismiss.
 
-![](https://raw.githubusercontent.com/wiki/kakajika/SwipeAwayDialog/images/example.gif)
+![](https://raw.githubusercontent.com/wiki/kakajika/SwipeAwayDialog/images/octocats.gif)
 
 ## Usage
 
@@ -22,5 +22,3 @@ public boolean onSwipedAway() {
     return true;
 }
 ```
-
-And if you want to disable swiping completely, use `setSwipeable`.
