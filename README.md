@@ -6,6 +6,14 @@ It's extremely easy to make Tinder-like UI.
 
 ![](https://raw.githubusercontent.com/wiki/kakajika/SwipeAwayDialog/images/dialogs.gif)
 
+## Install
+
+```groovy
+dependencies {
+    compile 'com.labo.kaji:swipeawaydialog:0.1.0'
+}
+```
+
 ## Usage
 
 Just extend `SwipeAwayDialogFragment` instead of `DialogFragment`.
