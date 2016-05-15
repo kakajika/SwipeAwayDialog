@@ -7,7 +7,10 @@ android:
     # - tools
 
     # The BuildTools version used by your project
-    - build-tools-23.0.2
+    - build-tools-23.0.3
 
     # The SDK version used to compile your project
     - android-23
+before_install:
+  - android-update-sdk --accept-licenses='android-sdk-license-.+' --components=tools
+  - android-update-sdk --accept-licenses='android-sdk-license-.+' --components=build-tools-23.0.3
