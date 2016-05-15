@@ -25,3 +25,8 @@ android:
 before_install:
   - android-update-sdk --accept-licenses='android-sdk-license-.+' --components=tools
   - android-update-sdk --accept-licenses='android-sdk-license-.+' --components=build-tools-23.0.3
+
+before_script:
+  - echo no | android create avd --force --name test --target $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &amp;
+  - android-wait-for-emulator
