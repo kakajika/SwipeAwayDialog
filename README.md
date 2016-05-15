@@ -4,6 +4,7 @@
 <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat">
 [![API](https://img.shields.io/badge/API-12%2B-yellow.svg?style=flat)](https://android-arsenal.com/api?level=12)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SwipeAwayDialog-green.svg?style=true)](http://android-arsenal.com/details/1/3519)
+[![Build Status](https://travis-ci.org/kakajika/SwipeAwayDialog.svg?branch=master)](https://travis-ci.org/kakajika/SwipeAwayDialog)
 
 Android DialogFragment that enables Dialog to be swiped away to dismiss.  
 It's extremely easy to make Tinder-like UI.
