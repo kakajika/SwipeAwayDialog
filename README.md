@@ -17,7 +17,7 @@ It's extremely easy to make Tinder-like UI.
 
 ```groovy
 dependencies {
-    compile 'com.labo.kaji:swipeawaydialog:0.1.0'
+    compile 'com.labo.kaji:swipeawaydialog:0.1.1'
 }
 ```
 
