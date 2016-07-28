@@ -9,7 +9,7 @@ android {
         minSdkVersion 12
         targetSdkVersion 23
         versionCode 1
-        versionName "0.1.0"
+        versionName "0.1.1"
     }
     buildTypes {
         release {
@@ -28,7 +28,7 @@ publish {
     userOrg = 'kakajika'
     groupId = 'com.labo.kaji'
     artifactId = 'swipeawaydialog'
-    publishVersion = '0.1.0'
+    publishVersion = android.defaultConfig.versionName
     desc = 'Android DialogFragment swipeable away to dismiss, like Tinder UI.'
     website = 'https://github.com/kakajika/SwipeAwayDialog'
 }
