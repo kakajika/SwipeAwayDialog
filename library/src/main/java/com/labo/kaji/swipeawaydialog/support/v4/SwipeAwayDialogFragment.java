@@ -64,6 +64,9 @@ public class SwipeAwayDialogFragment extends DialogFragment {
 
         if (!mSwipeLayoutGenerated && getShowsDialog()) {
             Window window = getDialog().getWindow();
+            if (window == null) {
+                return;
+            }
             ViewGroup decorView = (ViewGroup)window.getDecorView();
             View content = decorView.getChildAt(0);
             decorView.removeView(content);
@@ -75,7 +78,7 @@ public class SwipeAwayDialogFragment extends DialogFragment {
             mListener = new SwipeDismissTouchListener(decorView, "layout", new SwipeDismissTouchListener.DismissCallbacks() {
                 @Override
                 public boolean canDismiss(Object token) {
-                    return isCancelable() && mSwipeable;
+                    return isCancelable() && isSwipeable();
                 }
 
                 @Override
@@ -85,7 +88,7 @@ public class SwipeAwayDialogFragment extends DialogFragment {
                     }
                 }
             });
-            mListener.setTiltEnabled(mTiltEnabled);
+            mListener.setTiltEnabled(isTiltEnabled());
             layout.setSwipeDismissTouchListener(mListener);
             layout.setOnTouchListener(mListener);
             layout.setClickable(true);
